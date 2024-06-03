@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { useRecoilValueLoadable } from "recoil";
-import CategoriesICon from "./Icons/CategoriesICon";
+import CategoriesIcon from "./Icons/CategoriesICon";
 
 const MobileDrawer = ({ opened, onClose }) => {
   const pinned = useHeadroom({ fixedAt: 120 });
@@ -81,7 +81,7 @@ const MobileDrawer = ({ opened, onClose }) => {
                 children: "flex flex-col gap-3 w-full pt-3 ml-5",
               }}
               label={"Categories"}
-              leftSection={<CategoriesICon/>}
+              leftSection={<CategoriesIcon/>}
               className="flex  p-0 w-48 justify-center rounded hover:bg-transparent gap-3 ml-2 pl-5"
             >
               {bannerCategoryLoadable.state === "loading" && <p>Loading...</p>}

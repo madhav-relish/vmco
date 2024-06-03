@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoriesICon = () => {
+const CategoriesIcon = () => {
   return (
     <svg
       width="24"
@@ -17,4 +17,4 @@ const CategoriesICon = () => {
   );
 };
 
-export default CategoriesICon;
+export default CategoriesIcon;
