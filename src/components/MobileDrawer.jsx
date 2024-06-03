@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { useRecoilValueLoadable } from "recoil";
-import CategoriesIcon from "./Icons/CategoriesICon";
+import CategoriesIcon from "./Icons/CategoriesIcon";
 
 const MobileDrawer = ({ opened, onClose }) => {
   const pinned = useHeadroom({ fixedAt: 120 });
