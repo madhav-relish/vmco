@@ -4,25 +4,34 @@ import { useSearchParams } from 'next/navigation';
 const useFetchData = (initialUrl, initialFilters) => {
   const [data, setData] = useState([]);
   const [nextUrl, setNextUrl] = useState(initialUrl);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Set initial loading to true
+  const [loadingMore, setLoadingMore] = useState(false);
   const [filters, setFilters] = useState(initialFilters);
   const params = useSearchParams();
   const searchParam = params?.get('search') || '';
 
-  const fetchData = useCallback(async (url) => {
+  const fetchData = useCallback(async (url, append = false) => {
     try {
-      setLoading(true);
+      if (append) {
+        setLoadingMore(true);
+      } else {
+        setLoading(true);
+      }
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
       const result = await response.json();
-      setData((prevData) => [...prevData, ...result.results]);
+      setData((prevData) => append ? [...prevData, ...result.results] : result.results);
       setNextUrl(result.next);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
-      setLoading(false);
+      if (append) {
+        setLoadingMore(false);
+      } else {
+        setLoading(false); // Set loading to false after first fetch
+      }
     }
   }, []);
 
@@ -43,7 +52,7 @@ const useFetchData = (initialUrl, initialFilters) => {
       window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight &&
       nextUrl
     ) {
-      fetchData(nextUrl);
+      fetchData(nextUrl, true); // Append data when fetching more
     }
   }, [fetchData, nextUrl]);
 
@@ -52,7 +61,7 @@ const useFetchData = (initialUrl, initialFilters) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  return { data, loading, setFilters, filters };
+  return { data, loading, loadingMore, setFilters, filters };
 };
 
 export default useFetchData;

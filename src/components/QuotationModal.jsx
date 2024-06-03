@@ -65,7 +65,7 @@ const QuotationModal = ({ opened, onClose }) => {
     <Modal opened={opened} onClose={onClose} title="Request Quotation">
       {submissionStatus === 'success' ? (
         <Notification color="teal" title="Success" onClose={onClose}>
-          Quotation sent successfully.
+         An email has been to your inbox with the quotation. 
         </Notification>
       ) : (
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>

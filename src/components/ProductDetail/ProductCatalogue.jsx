@@ -4,8 +4,8 @@ import {
   ArrowDownTrayIcon,
   ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/24/outline';
-import { DocumentArrowDownIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import PdfIcon from '../Icons/PdfIcon';
 
 const ProductCatalogue = ({ catalouge, name }) => {
   return (
@@ -13,7 +13,7 @@ const ProductCatalogue = ({ catalouge, name }) => {
       <div className="border rounded px-10 py-4">
         <h1 className="text-2xl font-semibold">Download Product Catalogue</h1>
         <div className="ml-2 mt-2 flex justify-between items-center">
-          <DocumentArrowDownIcon className="size-5" />
+          <PdfIcon className="size-5" />
           <div>{name?.slice(0, 15) + ".pdf"}</div>
           <div className="flex gap-3">
             <Link href={catalouge} target='_blank' download={true}>

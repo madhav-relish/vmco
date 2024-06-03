@@ -42,15 +42,18 @@ const ProductsCard = (props) => {
 
   return (
     <Card
-      className="w-60 h-72 p-0 rounded-none bg-transparent transition-transform duration-300 ease-in-out transform hover:scale-105"
+      className="w-40 md:w-60 h-48 md:h-72 p-0 rounded-none bg-transparent transition-transform duration-300 ease-in-out transform hover:scale-105"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="rounded-xl">
         <Image
+        blurDataURL="https://image-component.nextjs.gallery/placeholder"
+        placeholder="blur"
+        unoptimized
           width={50}
           height={50}
-          className={`w-60 h-60 border rounded-xl ${isHovered && "rounded-b-none"} shadow-lg`}
+          className={`w-40 md:w-60 h-36  md:h-60 border rounded-xl ${isHovered && "rounded-b-none"} shadow-lg`}
           src={thumbnail || "/"} // Provide a fallback URL if thumbnail is missing
           alt={name}
         />
@@ -58,23 +61,23 @@ const ProductsCard = (props) => {
 
       {isHovered ? (
         // Hover element
-        <div className="flex h-16 w-60 border border-primaryGolden rounded-b-xl">
+        <div className="flex h-7 md:h-16 w-40 md:w-60 border border-primaryGolden rounded-b-xl">
           <div
             onClick={handleAddQuoteItem}
-            className="p-1 bg-primaryGradient font-semibold rounded-bl-xl text-xs w-48 text-white flex justify-center items-center cursor-pointer hover:shadow"
+            className="p-1 bg-primaryGradient font-semibold rounded-bl-xl text-xxs md:text-xs w-48 text-white flex justify-center items-center cursor-pointer hover:shadow"
           >
             Add to Request Quote
           </div>
           <Link
             href={`/products/${code}`}
-            className="flex justify-center bg-white rounded-br-xl items-center p-1 text-xs cursor-pointer hover:shadow-inner text-primaryGolden w-24"
+            className="flex justify-center bg-white rounded-br-xl items-center md:p-1 text-xxxs md:text-xs cursor-pointer hover:shadow-inner text-primaryGolden w-24"
           >
             View Details
           </Link>
         </div>
       ) : (
         // Card Footer
-        <div className="h-10 px-2 pt-1 overflow-hidden text-sm">
+        <div className="h-10 md:h-10 px-2 pt-1 overflow-hidden text-sm">
           <div>{brandName}</div>
           <div>{name}</div>
         </div>

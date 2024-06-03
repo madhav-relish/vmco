@@ -24,6 +24,7 @@ const CartButton = () => {
                 src={cartArrow}
                 width={50}
                 height={50}
+                alt='Cart'
                 className='cursor-pointer'
             />
         </div>

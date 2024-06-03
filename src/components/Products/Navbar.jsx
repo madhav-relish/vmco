@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LogoImage from "../../../public/images/logo.png";
 import { List, ListItem, rem } from "@mantine/core";
 import Link from "next/link";
@@ -14,14 +14,25 @@ const Navbar = () => {
   const params = useSearchParams();
   let currentCategory = params?.get("category");
 
+  const [mounted, setMounted] = useState(false);
+  const mountedRef = useRef(mounted);
+
   const bannerCategoryLoadable = useRecoilValueLoadable(bannerCategoryAtom);
 
   const generateSlug = (name) => {
-    return name.toLowerCase().replace(/\s+/g, '_');
+    return name.toLowerCase().replace(/\s+/g, "_");
   };
 
   useEffect(() => {
-    if (!currentCategory && bannerCategoryLoadable.state === "hasValue") {
+    mountedRef.current = true;
+    setMounted(true);
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (mountedRef.current && !currentCategory && bannerCategoryLoadable.state === "hasValue") {
       const firstCategory = bannerCategoryLoadable.contents[0];
       const firstCategorySlug = generateSlug(firstCategory.name);
       router.replace(`/products?category=${firstCategorySlug}`);
@@ -38,12 +49,12 @@ const Navbar = () => {
         transform: `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
         transition: "transform 500ms ease",
       }}
-      className="p-2 px-12 pt-2  bg-primaryDark w-full h-24"
+      className="p-2 px-12 pt-2 bg-primaryDark w-full h-24"
     >
       <div className="flex flex-col">
         <div className="flex justify-between items-center">
           <div>
-            <Image src={LogoImage} className="w-40 h-full object-cover" />
+            <Image src={LogoImage} alt="VMCO Gulf" className="w-40 h-full object-cover" />
           </div>
           <div className="flex">
             <List className="flex justify-between gap-10 w-full text-secondaryWhite">

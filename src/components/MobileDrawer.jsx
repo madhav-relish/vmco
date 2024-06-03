@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { useRecoilValueLoadable } from "recoil";
+import CategoriesICon from "./Icons/CategoriesICon";
 
 const MobileDrawer = ({ opened, onClose }) => {
   const pinned = useHeadroom({ fixedAt: 120 });
@@ -48,19 +49,20 @@ const MobileDrawer = ({ opened, onClose }) => {
         content: "bg-primaryDark",
         header: "bg-primaryDark px-5",
         inner: "max-w-72",
-        title: "text-white font-semibold text-2xl"
+        title: "text-white font-semibold text-2xl",
+        body: "p-0"
       }}
       opened={opened}
       onClose={onClose}
       title="Menu"
     >
-      <DrawerBody className=" text-white h-full">
+      <DrawerBody className="p-0 text-white h-full mt-8">
         
         <List className="flex flex-col gap-10">
           {navbarItems.map((item, idx) => (
-            <ListItem className="w-full " key={idx}>
+            <ListItem className="w-full border-b px-6 border-mutedGray" key={idx}>
               <Link
-                className="flex gap-4 w-full"
+                className="flex items-center gap-4 w-full"
                 href={item.link}
                 alt={item.label}
               >
@@ -76,11 +78,11 @@ const MobileDrawer = ({ opened, onClose }) => {
           >
             <NavLink
               classNames={{
-                children: "flex flex-col gap-3 w-full pt-3",
+                children: "flex flex-col gap-3 w-full pt-3 ml-5",
               }}
               label={"Categories"}
-              leftSection={<ArchiveBoxIcon className="size-5 text-white"/>}
-              className="flex  p-0 w-48 justify-center rounded hover:bg-transparent gap-3"
+              leftSection={<CategoriesICon/>}
+              className="flex  p-0 w-48 justify-center rounded hover:bg-transparent gap-3 ml-2 pl-5"
             >
               {bannerCategoryLoadable.state === "loading" && <p>Loading...</p>}
               {bannerCategoryLoadable.state === "hasValue" &&

@@ -4,7 +4,6 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    
   ],
   theme: {
     extend: {
@@ -17,6 +16,11 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
+        secondary: {
+          100: "#1A1A1A",
+          200: "#2C2E33",
+        },
+        textSecondary: "#B3B3B3",
         primaryGolden: '#D8A353', 
         primary: "orange-700",
         secondary: "#F7941D",
@@ -24,15 +28,18 @@ module.exports = {
         primaryDark: "#141517",
         lightYellow: "#fef8ee",
         secondaryWhite: "#E6E6E6",
-        lightBrown: "#333333"
+        lightBrown: "#333333",
+        offWhite: "#F5F5F5"
       },
       backgroundImage: {
         'primaryGradient': 'linear-gradient(98.87deg, #E05B31 -16.25%, #F7941D 90.71%)',
         'secondaryGradient': 'linear-gradient(#FFF, #F0A027, #FFF)'
       },
-      
+      fontSize: {
+        'xxxs': '7.5px', 
+        'xxs': "8.5px"
+      },
     },
-    
   },
   plugins: [],
 };

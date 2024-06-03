@@ -1,6 +1,8 @@
 
-import { BeakerIcon, BuildingStorefrontIcon, GiftIcon, HomeIcon } from '@heroicons/react/24/solid'
-
+import EcomIcon from '@/components/Icons/EcomIcon';
+import HomeIcon from '@/components/Icons/HomeIcon';
+import ProductsIcon from '@/components/Icons/ProductsIcon';
+import { BeakerIcon, BuildingStorefrontIcon, GiftIcon } from '@heroicons/react/24/solid'
 export const categories = [
     {
         label: "Vending Machines",
@@ -35,17 +37,17 @@ export const navbarItems = [
     {
         label: "Home",
         link: "/",
-        icon: <HomeIcon className='size-5' />
+        icon: <HomeIcon/>
     },
     {
         label: "Products",
         link: "/products",
-        icon: <GiftIcon className='size-5'/>
+        icon: <ProductsIcon/>
     },
     {
         label: "E-commerce",
         link: "/",
-        icon: <BuildingStorefrontIcon className='size-5'/>
+        icon: <EcomIcon/>
 
     },
 ]

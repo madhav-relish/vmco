@@ -21,6 +21,8 @@ const ProductDetail = ({ productData }) => {
             {productData.images?.map((image, idx) => (
               <Carousel.Slide key={idx}>
                 <Image
+                
+                
                   className="object-cover w-full h-full"
                   src={image.image}
                   alt={`Product image ${idx + 1}`}

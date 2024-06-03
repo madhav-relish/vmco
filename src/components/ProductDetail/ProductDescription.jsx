@@ -6,7 +6,7 @@ const ProductDescription = ({ productData }) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <p className="font-semibold">Product Description</p>
+      <h2 className="font-semibold">Product Description</h2>
       <p className="text-mutedGray text-sm">{productData?.description}</p>
       {productData?.marketing_tag_data && (
         <Badge

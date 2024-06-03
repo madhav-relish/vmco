@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <NextTopLoader showSpinner={false} color="#FFBF00" />
         <MantineProvider theme={theme}>
-          {/* <Suspense
+          <Suspense
             fallback={
               <>
                 <div className="w-full h-screen grid place-content-center">
@@ -32,9 +32,9 @@ export default function RootLayout({ children }) {
                 </div>
               </>
             }
-          > */}
+          >
             {children}
-          {/* </Suspense> */}
+          </Suspense>
         </MantineProvider>
       </body>
     </html>
